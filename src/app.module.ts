@@ -4,6 +4,7 @@ import { TenancyModule } from './tenancy/tenancy.module';
 import { Tenancy } from './tenancy/entities/tenancy.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MasterDbConfig } from './config/master.db.config';
+import { SchemaEnv } from './config/schema.env';
 
 @Module({
   imports: [
@@ -13,7 +14,9 @@ import { MasterDbConfig } from './config/master.db.config';
       useFactory: MasterDbConfig,
     }),
     TenancyModule,
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      validationSchema: SchemaEnv,
+    }),
   ],
 })
 export class AppModule {

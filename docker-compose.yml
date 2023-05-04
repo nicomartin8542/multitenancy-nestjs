@@ -5,11 +5,11 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: master
-      MYSQL_USER: master
-      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: ${PASSWORD_ROOT_DB}
+      MYSQL_DATABASE: ${DATABASE_DB}
+      MYSQL_USER: ${USERNAME_DB}
+      MYSQL_PASSWORD: ${PASSWORD_DB}
     ports:
-      - '3306:3306'
+      - ${PORT_DB}:${PORT_DB}
     volumes:
       - ./mysql:/var/lib/mysql

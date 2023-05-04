@@ -8,7 +8,7 @@ export const MasterDbConfig = (
   return {
     type: 'mysql', // Tipo de base de datos
     host: config.get('HOST_DB'), // Host de la base de datos
-    port: config.get('PORT_DB'), // Puerto de la base de datos
+    port: +config.get('PORT_DB'), // Puerto de la base de datos
     username: config.get('USERNAME_DB'), // Usuario de la base de datos
     password: config.get('PASSWORD_DB'), //Contraseña de la base de datos
     database: config.get('DATABASE_DB'), // Nombre de la base de datos
