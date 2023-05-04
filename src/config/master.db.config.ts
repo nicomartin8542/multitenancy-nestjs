@@ -12,7 +12,7 @@ export const MasterDbConfig = (
     username: config.get('USERNAME_DB'), // Usuario de la base de datos
     password: config.get('PASSWORD_DB'), //Contraseña de la base de datos
     database: config.get('DATABASE_DB'), // Nombre de la base de datos
-    entities: [Tenancy], // Arreglo de entidades (tablas) de la base de datos
     synchronize: true, // Sincronizar la estructura de la base de datos c
+    autoLoadEntities: true,
   };
 };

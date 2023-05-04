@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+} from '@nestjs/common';
 import { TenancyService } from './tenancy.service';
 import { CreateTenancyDto } from './dto/create-tenancy.dto';
 import { UpdateTenancyDto } from './dto/update-tenancy.dto';
@@ -17,14 +26,17 @@ export class TenancyController {
     return this.tenancyService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tenancyService.findOne(+id);
+  @Get(':term')
+  findOne(@Param('term') term: string) {
+    return this.tenancyService.findOne(term);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTenancyDto: UpdateTenancyDto) {
-    return this.tenancyService.update(+id, updateTenancyDto);
+  update(
+    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+    @Body() updateTenancyDto: UpdateTenancyDto,
+  ) {
+    return this.tenancyService.update(id, updateTenancyDto);
   }
 
   @Delete(':id')

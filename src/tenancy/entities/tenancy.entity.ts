@@ -1,3 +1,4 @@
+import { IsUUID } from 'class-validator';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'tenancy' })
